@@ -58,6 +58,7 @@ li:nth-child(odd) {
 .wrapper {
   margin: 100px auto 0 auto;
   max-width: 600px;
+  
 }
 
 .hide {
