@@ -1,9 +1,7 @@
-// variables to keep track of quiz state
 var currentQuestionIndex = 0;
-var time = questions.length * 15;
+var time = questions.length * 20;
 var timerId;
 
-// variables to reference DOM elements
 var questionsEl = document.getElementById("questions");
 var timerEl = document.getElementById("time");
 var choicesEl = document.getElementById("choices");
@@ -12,19 +10,19 @@ var startBtn = document.getElementById("start");
 var initialsEl = document.getElementById("initials");
 var feedbackEl = document.getElementById("feedback");
 
-// sound effects
-var sfxRight = new Audio("assets/sfx/correct.wav");
-var sfxWrong = new Audio("assets/sfx/incorrect.wav");
+// SFX
+var sfxRight = new Audio("assets/sfx/yea.wav");
+var sfxWrong = new Audio("assets/sfx/boo.mp4");
 
 function startQuiz() {
-  // hide start screen
+  // hide the start screen
   var startScreenEl = document.getElementById("start-screen");
   startScreenEl.setAttribute("class", "hide");
 
-  // un-hide questions section
+  // reveal questions
   questionsEl.removeAttribute("class");
 
-  // start timer
+  // start the timer
   timerId = setInterval(clockTick, 1000);
 
   // show starting time
@@ -34,26 +32,25 @@ function startQuiz() {
 }
 
 function getQuestion() {
-  // get current question object from array
+  // show current questions
   var currentQuestion = questions[currentQuestionIndex];
 
-  // update title with current question
+  // update with current question
   var titleEl = document.getElementById("question-title");
   titleEl.textContent = currentQuestion.title;
 
-  // clear out any old question choices
+  // clear previous question choices
   choicesEl.innerHTML = "";
 
-  // loop over choices
   currentQuestion.choices.forEach(function(choice, i) {
-    // create new button for each choice
+    
     var choiceNode = document.createElement("button");
     choiceNode.setAttribute("class", "choice");
     choiceNode.setAttribute("value", choice);
 
     choiceNode.textContent = i + 1 + ". " + choice;
 
-    // attach click event listener to each choice
+    // attach click event listener
     choiceNode.onclick = questionClick;
 
     // display on the page
@@ -62,39 +59,37 @@ function getQuestion() {
 }
 
 function questionClick() {
-  // check if user guessed wrong
+  
   if (this.value !== questions[currentQuestionIndex].answer) {
-    // penalize time
+    // if wrong take time off
     time -= 15;
 
     if (time < 0) {
       time = 0;
     }
 
-    // display new time on page
+    // show the new time
     timerEl.textContent = time;
 
-    // play "wrong" sound effect
+    // play boo
     sfxWrong.play();
 
     feedbackEl.textContent = "Wrong!";
   } else {
-    // play "right" sound effect
+    // play yea
     sfxRight.play();
 
     feedbackEl.textContent = "Correct!";
   }
-
-  // flash right/wrong feedback on page for half a second
   feedbackEl.setAttribute("class", "feedback");
   setTimeout(function() {
     feedbackEl.setAttribute("class", "feedback hide");
   }, 1000);
 
-  // move to next question
+  // go to next question
   currentQuestionIndex++;
 
-  // check if we've run out of questions
+  // check for another question
   if (currentQuestionIndex === questions.length) {
     quizEnd();
   } else {
@@ -133,13 +128,11 @@ function saveHighscore() {
   // get value of input box
   var initials = initialsEl.value.trim();
 
-  // make sure value wasn't empty
   if (initials !== "") {
-    // get saved scores from localstorage, or if not any, set to empty array
     var highscores =
       JSON.parse(window.localStorage.getItem("highscores")) || [];
 
-    // format new score object for current user
+    // show new score
     var newScore = {
       score: time,
       initials: initials
@@ -149,22 +142,23 @@ function saveHighscore() {
     highscores.push(newScore);
     window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
-    // redirect to next page
+    // link to highscores
     window.location.href = "highscores.html";
   }
 }
 
 function checkForEnter(event) {
-  // "13" represents the enter key
   if (event.key === "Enter") {
     saveHighscore();
   }
 }
 
-// user clicks button to submit initials
+// click button to submit initials
 submitBtn.onclick = saveHighscore;
 
-// user clicks button to start quiz
+
+
+// click button to start quiz
 startBtn.onclick = startQuiz;
 
 initialsEl.onkeyup = checkForEnter;
