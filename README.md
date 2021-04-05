@@ -11,6 +11,9 @@ faster the time runs out.
 
 
 gitHub : https://github.com/Pgturn68/Java-Script-Quiz
+
+Site : https://pgturn68.github.io/Java-Script-Quiz/
+
 email : pgturn68@gmail.com
 
 
