@@ -1,8 +1,8 @@
 // list of all questions, choices, and answers
 var questions = [
   {
-    title: "Commonly used data types DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "numbers"],
+    title: "Most Frequently used types of data DO NOT include:",
+    choices: ["strings", "booleans", "alerts", "names"],
     answer: "alerts"
   },
   {
@@ -11,7 +11,7 @@ var questions = [
     answer: "parentheses"
   },
   {
-    title: "Arrays in JavaScript can be used to store ____.",
+    title: "The arrays in JavaScript are used to store ____.",
     choices: [
       "numbers and strings",
       "other arrays",
@@ -23,7 +23,7 @@ var questions = [
   {
     title:
       "String values must be enclosed within ____ when being assigned to variables.",
-    choices: ["commas", "curly brackets", "quotes", "parentheses"],
+    choices: ["Squares", "curly brackets", "quotes", "parentheses"],
     answer: "quotes"
   },
   {
