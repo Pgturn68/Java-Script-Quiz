@@ -1,4 +1,4 @@
-
+// variables for Quiz
 var currentQuestionIndex = 0;
 var time = questions.length * 20;
 var timerId;
@@ -16,14 +16,14 @@ var sfxRight = new Audio("assets/sfx/yea.wav");
 var sfxWrong = new Audio("assets/sfx/boo.mp4");
 
 function startQuiz() {
-  // hide the start screen
+  // Dont show start screen
   var startScreenEl = document.getElementById("start-screen");
   startScreenEl.setAttribute("class", "hide");
 
   // reveal questions
   questionsEl.removeAttribute("class");
 
-  // start the timer
+  // Timer start
   timerId = setInterval(clockTick, 1000);
 
   // show starting time
@@ -33,7 +33,7 @@ function startQuiz() {
 }
 
 function getQuestion() {
-  // show current questions
+  // display current questions
   var currentQuestion = questions[currentQuestionIndex];
 
   // update with current question
@@ -51,7 +51,7 @@ function getQuestion() {
 
     choiceNode.textContent = i + 1 + ". " + choice;
 
-    // attach click event listener
+    // attach click listener
     choiceNode.onclick = questionClick;
 
     // display on the page
@@ -63,13 +63,13 @@ function questionClick() {
   
   if (this.value !== questions[currentQuestionIndex].answer) {
     // if wrong take time off
-    time -= 15;
+    time -= 20;
 
     if (time < 0) {
       time = 0;
     }
 
-    // show the new time
+    // display new time
     timerEl.textContent = time;
 
     // play boo
@@ -90,7 +90,7 @@ function questionClick() {
   // go to next question
   currentQuestionIndex++;
 
-  // check for another question
+  // looks for another question
   if (currentQuestionIndex === questions.length) {
     quizEnd();
   } else {
@@ -102,7 +102,7 @@ function quizEnd() {
   // stop timer
   clearInterval(timerId);
 
-  // show end screen
+  // display the end screen
   var endScreenEl = document.getElementById("end-screen");
   endScreenEl.removeAttribute("class");
 
@@ -119,7 +119,7 @@ function clockTick() {
   time--;
   timerEl.textContent = time;
 
-  // check if user ran out of time
+  // did the time run out of time
   if (time <= 0) {
     quizEnd();
   }
@@ -139,7 +139,7 @@ function saveHighscore() {
       initials: initials
     };
 
-    // save to localstorage
+    // save localstorage
     highscores.push(newScore);
     window.localStorage.setItem("highscores", JSON.stringify(highscores));
 
@@ -154,12 +154,12 @@ function checkForEnter(event) {
   }
 }
 
-// click button to submit initials
+// click button to insert initials
 submitBtn.onclick = saveHighscore;
 
 
 
-// click button to start quiz
+// click button to start
 startBtn.onclick = startQuiz;
 
 initialsEl.onkeyup = checkForEnter;
