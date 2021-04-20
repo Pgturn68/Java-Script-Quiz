@@ -2,7 +2,7 @@
 var questions = [
   {
     title: "Which one of these is a JavaScript package manager?",
-    choices: ["Node.js", "TypeScript", "alerts", "NPM","Arrays"],
+    choices: ["Node.js", "TypeScript", "alerts", "NPM"],
     answer: "NPM"
   },
   {
