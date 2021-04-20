@@ -6,9 +6,9 @@ var questions = [
     answer: "NPM"
   },
   {
-    title: "The condition in an if / else statement is enclosed within ____.",
-    choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-    answer: "parentheses"
+    title: "A JavaScript Boolean represents_",
+    choices: ["quotes", "True or False", "Names", "Background Color"],
+    answer: "True or False"
   },
   {
     title: "The arrays in JavaScript are used to store ____.",
