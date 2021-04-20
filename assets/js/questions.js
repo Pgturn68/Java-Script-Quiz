@@ -1,9 +1,9 @@
 // list of all questions, choices, and answers
 var questions = [
   {
-    title: "Most Frequently used types of data DO NOT include:",
-    choices: ["strings", "booleans", "alerts", "names"],
-    answer: "alerts"
+    title: "Which one of these is a JavaScript package manager?",
+    choices: ["Node.js", "TypeScript", "alerts", "NPM","Arrays"],
+    answer: "NPM"
   },
   {
     title: "The condition in an if / else statement is enclosed within ____.",
