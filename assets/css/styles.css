@@ -32,11 +32,11 @@ button {
 
 button:hover {
   background-color: red;
-  cursor: hand;
 }
 
 .choices button {
   display: square;
+  cursor: hand;
 }
 
 input[type="text"] {
