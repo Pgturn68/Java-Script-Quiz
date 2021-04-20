@@ -22,9 +22,9 @@ var questions = [
   },
   {
     title:
-      "String values must be enclosed within ____ when being assigned to variables.",
-    choices: ["Squares", "curly brackets", "quotes", "parentheses"],
-    answer: "quotes"
+      "Which of the following property is used to set the text shadow around a text?",
+    choices: ["white-space", "text-shadow", "text-decoration", "text-transform"],
+    answer: "text-shadow"
   },
   {
     title:
